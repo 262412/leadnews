@@ -1,16 +1,19 @@
 package com.heima.common.exception;
 
-
 import com.heima.model.common.dtos.ResponseResult;
 import com.heima.model.common.enums.AppHttpCodeEnum;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @ControllerAdvice  //控制器增强类
-@Slf4j
+
 public class ExceptionCatch {
+
+    // 手动定义 log 变量
+    private static final Logger log = LoggerFactory.getLogger(ExceptionCatch.class);
 
     /**
      * 处理不可控异常
@@ -19,9 +22,9 @@ public class ExceptionCatch {
      */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public ResponseResult exception(Exception e){
+    public ResponseResult exception(Exception e) {
         e.printStackTrace();
-        log.error("catch exception:{}",e.getMessage());
+        log.error("catch exception:{}", e.getMessage());
 
         return ResponseResult.errorResult(AppHttpCodeEnum.SERVER_ERROR);
     }
@@ -33,8 +36,8 @@ public class ExceptionCatch {
      */
     @ExceptionHandler(CustomException.class)
     @ResponseBody
-    public ResponseResult exception(CustomException e){
-        log.error("catch exception:{}",e);
+    public ResponseResult exception(CustomException e) {
+        log.error("catch exception:{}", e);
         return ResponseResult.errorResult(e.getAppHttpCodeEnum());
     }
 }
