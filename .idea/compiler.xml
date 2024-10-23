@@ -8,9 +8,9 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="heima-leadnews-test" />
         <module name="heima-leadnews-utils" />
         <module name="hieima-leadnews-app-getway" />
+        <module name="freemaker-demo" />
         <module name="heima-leadnews-feign-api" />
         <module name="heima-leadnews-user" />
         <module name="heima-leadnews-article" />
@@ -24,6 +24,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="freemaker-demo" options="-parameters" />
       <module name="heima-leadnews" options="-parameters" />
       <module name="heima-leadnews-apis" options="-parameters" />
       <module name="heima-leadnews-article" options="-parameters" />
